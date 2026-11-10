@@ -1,9 +1,14 @@
 import { promises as fs } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { MongoClient, type Db } from "mongodb";
 import type { Appointment, DbShape, Service, Settings } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+// On Vercel the deployment directory (/var/task) is read-only at runtime,
+// so the file store must live under /tmp there. Locally it stays in ./data.
+const DATA_DIR = process.env.VERCEL
+  ? path.join(os.tmpdir(), "abrar-dental-data")
+  : path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "db.json");
 const DB_NAME = "abrar-dental";
 
@@ -94,11 +99,18 @@ class FileStore implements Store {
 
   private persist(): Promise<void> {
     const data = JSON.stringify(this.cache, null, 2);
+    // Never let a filesystem failure break the API: the in-memory cache
+    // keeps serving, and the error is only logged. On Vercel the file
+    // store is best-effort anyway (real persistence needs MongoDB).
     this.writeQueue = this.writeQueue.then(async () => {
-      await fs.mkdir(DATA_DIR, { recursive: true });
-      const tmp = `${DATA_FILE}.tmp-${process.pid}`;
-      await fs.writeFile(tmp, data, "utf8");
-      await fs.rename(tmp, DATA_FILE);
+      try {
+        await fs.mkdir(DATA_DIR, { recursive: true });
+        const tmp = `${DATA_FILE}.tmp-${process.pid}`;
+        await fs.writeFile(tmp, data, "utf8");
+        await fs.rename(tmp, DATA_FILE);
+      } catch (err) {
+        console.warn("[store] file persist failed, using in-memory cache:", err);
+      }
     });
     return this.writeQueue;
   }

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { bnDigits, fmtMoney, useLang } from "@/lib/i18n";
 import { useServices, useSettings } from "@/lib/useSite";
 import { dhakaNowMinutes, dhakaTodayStr, parseHHMM, weekdayOf } from "@/lib/hours";
@@ -95,15 +96,15 @@ export default function Home() {
           </div>
 
           <div data-enter-art className="relative mx-auto w-full max-w-md">
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-white via-mist to-mist-deep px-8 pb-10 pt-8 shadow-xl shadow-teal/10">
-              <div className="floaty mx-auto w-56 sm:w-64">
-                <Molar className="h-auto w-full drop-shadow-lg" />
-              </div>
-              <div className="mt-6 flex items-center justify-center gap-2">
-                <span className="rounded-full bg-ink px-3.5 py-1.5 text-xs font-bold text-white">ABRAR</span>
-                <span className="rounded-full bg-coral px-3.5 py-1.5 text-xs font-bold text-white">ACTIVE</span>
-                <span className="rounded-full bg-teal px-3.5 py-1.5 text-xs font-bold text-white">DENTAL</span>
-              </div>
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-line shadow-xl shadow-teal/10">
+              <Image
+                src="/images/hero-clinic.jpg"
+                alt="Abrar Active Dental clinic"
+                width={1600}
+                height={893}
+                className="h-auto w-full object-cover"
+                priority
+              />
             </div>
             <div className="absolute -left-3 top-8 rounded-2xl border border-line bg-white px-4 py-3 shadow-lg sm:-left-6">
               <p className="text-lg font-bold leading-none text-teal">{lang === "bn" ? "১০০%" : "100%"}</p>
@@ -207,13 +208,21 @@ export default function Home() {
       <section id="doctor" className="scroll-mt-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 md:grid-cols-2 md:py-24">
           <Reveal>
-            <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2.5rem] border border-line bg-gradient-to-br from-teal to-teal-deep p-8 text-white shadow-xl shadow-teal/20">
-              <Molar className="mx-auto w-40 drop-shadow" tooth="#ffffff" outline="#0b2e35" cheek="#ffffff" />
-              <p className="mt-6 text-center text-2xl font-bold">{t("doctor.name")}</p>
+            <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2.5rem] border border-line bg-teal text-white shadow-xl shadow-teal/20">
+              <Image
+                src="/images/clinic-interior.jpg"
+                alt="Abrar Active Dental clinic interior"
+                width={1200}
+                height={896}
+                className="h-64 w-full object-cover"
+              />
+              <div className="p-8 pt-6">
+              <p className="text-center text-2xl font-bold">{t("doctor.name")}</p>
               <p className="mt-1 text-center text-sm font-medium text-white/75">{t("doctor.role")} · Abrar Active Dental</p>
               <div className="mt-6 flex justify-center gap-2">
                 <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">BDS</span>
                 <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">Mirpur-12</span>
+              </div>
               </div>
             </div>
           </Reveal>
@@ -264,6 +273,19 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---------- PHOTO GALLERY ---------- */}
+      <section aria-label="Clinic photos">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
+          <Reveal>
+            <div className="grid gap-5 sm:grid-cols-3">
+              <Image src="/images/smile-closeup.jpg" alt="Bright healthy smile" width={1200} height={896} className="h-64 w-full rounded-3xl border border-line object-cover sm:h-72" />
+              <Image src="/images/child-care.jpg" alt="Children's dental care" width={1200} height={896} className="h-64 w-full rounded-3xl border border-line object-cover sm:h-72" />
+              <Image src="/images/whitening-smile.jpg" alt="Teeth whitening result" width={1200} height={896} className="h-64 w-full rounded-3xl border border-line object-cover sm:h-72" />
+            </div>
+          </Reveal>
         </div>
       </section>
 

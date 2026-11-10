@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { bnDigits, fmtMoney, useLang } from "@/lib/i18n";
 import { useServices, useSettings } from "@/lib/useSite";
 import { addDaysStr, dhakaTodayStr, isValidBdPhone, toHHMM } from "@/lib/hours";
-import Molar from "@/components/Molar";
+import Image from "next/image";
 import type { Appointment, Service } from "@/lib/types";
 
 const WEEKDAYS_EN = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -121,8 +121,8 @@ function BookInner() {
     return (
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 md:py-20">
         <div className="rounded-[2rem] border border-line bg-white p-8 text-center shadow-xl shadow-teal/10 sm:p-10">
-          <div className="mx-auto w-20">
-            <Molar className="h-auto w-full" />
+          <div className="mx-auto h-24 w-24 overflow-hidden rounded-full border-4 border-mist shadow-md">
+            <Image src="/images/smile-closeup.jpg" alt="Bright smile" width={1200} height={896} className="h-full w-full object-cover" />
           </div>
           <h1 className="mt-5 text-3xl font-bold tracking-tight">{t("book.success")}</h1>
           <p className="mx-auto mt-3 max-w-md text-[16px] leading-relaxed text-ink/65">{t("book.successSub")}</p>

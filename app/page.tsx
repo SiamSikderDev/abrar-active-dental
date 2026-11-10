@@ -312,7 +312,7 @@ export default function Home() {
                           {label}
                           {isToday && <span className="ml-2 rounded-full bg-teal px-2 py-0.5 text-[11px] font-bold text-white">{t("hours.today")}</span>}
                         </span>
-                        <span className="text-right">{val}</span>
+                        <span className="whitespace-nowrap text-right">{val}</span>
                       </li>
                     );
                   })}

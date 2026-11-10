@@ -16,7 +16,7 @@ const en = {
   "nav.admin": "Admin",
   "hero.kicker": "Dental care in Mirpur-12",
   "hero.title": "Your smile matters.",
-  "hero.titleAccent": "we take care of it.",
+  "hero.titleAccent": "We take care of it.",
   "hero.sub": "All kinds of oral and dental treatments with a focus on quality and care, in a modern, sterile clinic at Kalshi Mor.",
   "hero.fact": "100% of patients recommend us",
   "hero.book": "Book Appointment",

@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Brand tokens from the taste skill (Abrar Active Dental logo/cover):
+   pale aqua bg, deep teal ink, teal primary, red + green accents. */
+@theme {
+  --color-mist: #eaf7f6;
+  --color-mist-deep: #d6efec;
+  --color-ink: #0b2e35;
+  --color-pine: #123f45;
+  --color-teal: #0e7c7b;
+  --color-teal-deep: #0a5e5d;
+  --color-coral: #d92b2b;
+  --color-leaf: #1e9e6a;
+  --color-muted: #5b7a7d;
+  --color-line: #cfe6e3;
+  --font-sans: var(--font-inter), var(--font-hind), system-ui, sans-serif;
+  --font-bn: var(--font-hind), var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+html[lang="bn"] body {
+  font-family: var(--font-bn);
+}
+
+::selection {
+  background: var(--color-teal);
+  color: #fff;
+}
+
+/* Quiet micro-interactions (house rule 5): linked cards lift, buttons step. */
+.card-lift {
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -14px rgba(11, 46, 53, 0.28);
+}
+
+.btn-step {
+  transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+.btn-step:hover {
+  transform: translateY(-1px);
+}
+.btn-step:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 250ms ease;
+}
+.link-underline:hover {
+  background-size: 100% 2px;
+}
+
+/* Gentle float for the hero molar (GSAP handles the entrance; this is a
+   slow ambient loop only). */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.floaty {
+  animation: floaty 5s ease-in-out infinite;
+}

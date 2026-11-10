@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hind_Siliguri, Inter } from "next/font/google";
+import { Fraunces, Hind_Siliguri, Inter, Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
@@ -18,6 +18,23 @@ const hind = Hind_Siliguri({
   display: "swap",
 });
 
+// Premium display serif for headings: Fraunces (Latin) + Noto Serif Bengali.
+// Fraunces has no Bengali glyphs, so Bangla headings fall through to the
+// Bengali serif automatically.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const notoSerifBn = Noto_Serif_Bengali({
+  variable: "--font-noto-bn",
+  subsets: ["bengali"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Abrar Active Dental | Mirpur-12 | দাঁতের চিকিৎসা",
   description:
@@ -26,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="bn" className={`${inter.variable} ${hind.variable} h-full antialiased`}>
+    <html lang="bn" className={`${inter.variable} ${hind.variable} ${fraunces.variable} ${notoSerifBn.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <LangProvider>
           <Navbar />

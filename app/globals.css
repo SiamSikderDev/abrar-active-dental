@@ -15,6 +15,7 @@
   --color-line: #cfe6e3;
   --font-sans: var(--font-inter), var(--font-hind), system-ui, sans-serif;
   --font-bn: var(--font-hind), var(--font-inter), system-ui, sans-serif;
+  --font-head: var(--font-fraunces), var(--font-noto-bn), Georgia, serif;
 }
 
 html {
@@ -29,6 +30,16 @@ body {
 
 html[lang="bn"] body {
   font-family: var(--font-bn);
+}
+
+/* Display serif for all headings (Fraunces Latin, Noto Serif Bengali). */
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 
 ::selection {

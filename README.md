@@ -12,6 +12,12 @@ with online appointment booking and a clinic admin panel.
   Confirm / Cancel / Complete / Delete, edit services & prices, edit opening
   hours / phone / address. All changes are live immediately.
 
+## Live site
+
+- Website: https://abrar-active-dental-siamsikderdevs-projects.vercel.app
+- Admin panel: https://abrar-active-dental-siamsikderdevs-projects.vercel.app/admin
+- GitHub: https://github.com/SiamSikderDev/abrar-active-dental
+
 ## Stack
 
 Next.js 16 (App Router, TypeScript) + Tailwind CSS v4 + GSAP (ScrollTrigger)

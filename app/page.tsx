@@ -210,11 +210,11 @@ export default function Home() {
           <Reveal>
             <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-[2.5rem] border border-line bg-teal text-white shadow-xl shadow-teal/20">
               <Image
-                src="/images/clinic-interior.jpg"
-                alt="Abrar Active Dental clinic interior"
+                src="/images/doctor-arifa.jpg"
+                alt="Dr. Arifa Rahman, Dental Surgeon"
                 width={1200}
                 height={896}
-                className="h-64 w-full object-cover"
+                className="h-72 w-full object-cover"
               />
               <div className="p-8 pt-6">
               <p className="text-center text-2xl font-bold">{t("doctor.name")}</p>
